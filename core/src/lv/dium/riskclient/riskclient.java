@@ -1,28 +1,58 @@
 package lv.dium.riskclient;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.NinePatch;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.FrameBuffer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import space.earlygrey.shapedrawer.ShapeDrawer;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class riskclient extends ApplicationAdapter {
-	SpriteBatch batch;
+import static com.badlogic.gdx.graphics.Color.BLACK;
+import static com.badlogic.gdx.graphics.Color.LIME;
+
+public class riskclient extends Game {
+	public SpriteBatch batch;
+	ShapeDrawer drawer;
 	Texture img;
+	Texture myImg;
+	Texture myShapesImg;
 	Texture circle;
 	Sprite myCircle;
 	riskArea myArea;
 	List<riskArea> myAreas = new ArrayList<riskArea>();
+	Texture myTexture;
 
-	private static int getRandomNumberInRange(int min, int max) {
+	BitmapFont font;
+
+	FitViewport viewport;
+	OrthographicCamera camera;
+	ShapeRenderer shape;
+
+	private ShapeRenderer shapeRenderer;
+	private FrameBuffer frameBuffer;
+	private SpriteBatch spriteBatch;
+
+	TextureRegion mainRegion;
+
+	public final static float WIDTH = 1920;
+	public final static float HEIGHT = 1024;
+
+	public static int getRandomNumberInRange(int min, int max) {
 
 		if (min >= max) {
 			throw new IllegalArgumentException("max must be greater than min");
@@ -34,61 +64,58 @@ public class riskclient extends ApplicationAdapter {
 
 	@Override
 	public void create () {
+
+		Float width = 1920f;
+		Float height = 1024f;
+
 		batch = new SpriteBatch();
-		img = new Texture("map.jpg");
-		circle = new Texture("circle.png");
+		font = new BitmapFont();
+
+		camera = new OrthographicCamera(1920, 1024);
 
 		for (int i = 0; i < 42; i++) {
-			myAreas.add(new riskArea(this.getRandomNumberInRange(0,800), this.getRandomNumberInRange(0,550)));
+			myAreas.add(new riskArea(this.getRandomNumberInRange(25,width.intValue()-25), this.getRandomNumberInRange(25,height.intValue()-25)));
 		}
 
-		//myArea = new riskArea(100,100);
-		/*
-		ParticleEffect effect = new ParticleEffect();
-		effect.load(Gdx.files.internal("particles/blueLight.p"), particleAtlas);
-		effect.start();
-		*/
-//Setting the position of the ParticleEffect
-		//effect.setPosition(100, 100);
+		Pixmap pixmap = new Pixmap(1, 1, Pixmap.Format.RGBA8888);
+		pixmap.setColor(Color.WHITE);
+		pixmap.drawPixel(0, 0);
+		myTexture = new Texture(pixmap); //remember to dispose of later
+		pixmap.dispose();
+		myTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+		TextureRegion region = new TextureRegion(myTexture, 0, 0, 1, 1);
 
-//Updating and Drawing the particle effect
-//Delta being the time to progress the particle effect by, usually you pass in Gdx.graphics.getDeltaTime();
-		//effect.draw(batch, Gdx.graphics.getDeltaTime());
-	/*
-		TextureAtlas atlas;
-		atlas = new TextureAtlas(Gdx.files.internal("packed/game.atlas"));
-		TextureAtlas.AtlasRegion region = atlas.findRegion("circle.png");
-		*/
+		drawer = new ShapeDrawer(batch, region);
 
-		/*myCircle = new Sprite(region);*/
+		setScreen(new MainMenuScreen(this));
 
 	}
-
+/*
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(0.57f, 0.77f, 0.85f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		camera.update();
+		Gdx.gl20.glClearColor(0.57f, 0.77f, 0.85f, 1);
+		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
-		batch.draw(img, 0, 0);
 
-
+		float secondsPassed = Gdx.graphics.getDeltaTime();
+		//System.out.println(secondsPassed+"s");
+		drawer.setColor(0f, 150f, 150f, 1);
 		for (int i = 0; i < 42; i++) {
-			batch.draw(circle, myAreas.get(i).getX(), myAreas.get(i).getY());
+			myAreas.get(i).tick(secondsPassed);
+			drawer.setColor(myAreas.get(i).getColorA(), myAreas.get(i).getColorB(), myAreas.get(i).getColorC(), 1);
+			drawer.filledPolygon(myAreas.get(i).getX(), myAreas.get(i).getY(), 6, 40, 40);
 		}
-
-		//batch.draw(circle, myArea.getX(), myArea.getY());
-
-
-		//myCircle.setPosition(100, 100);
-		//myCircle.draw(batch);
 
 		batch.end();
 	}
-	
+	*/
 	@Override
 	public void dispose () {
 		batch.dispose();
 		img.dispose();
+		myImg.dispose();
+		myTexture.dispose();
 	}
 }
