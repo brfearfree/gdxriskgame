@@ -1,6 +1,4 @@
 buildscript {
-    
-
     repositories {
         mavenLocal()
         mavenCentral()
@@ -9,14 +7,13 @@ buildscript {
         jcenter()
         google()
     }
-    dependencies {
-        
+}
 
-    }
+repositories {
+    mavenCentral()
 }
 
 allprojects {
-
     version = '1.0'
     ext {
         appName = "my-gdx-game"
@@ -26,6 +23,7 @@ allprojects {
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
         shapedrawerVersion = '2.1.0'
+        libVersion = '1.9.1.9.6'
     }
 
     repositories {
@@ -42,7 +40,6 @@ allprojects {
 project(":desktop") {
     apply plugin: "java-library"
 
-
     dependencies {
         implementation project(":core")
         api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
@@ -50,13 +47,12 @@ project(":desktop") {
         api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
-        
+        compile group: 'io.netty', name: 'netty-all', version: '4.1.29.Final'
     }
 }
 
 project(":core") {
     apply plugin: "java-library"
-
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
@@ -65,6 +61,6 @@ project(":core") {
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         implementation "space.earlygrey:shapedrawer:$shapedrawerVersion"
-        
+        compile group: 'io.netty', name: 'netty-all', version: '4.1.29.Final'
     }
 }

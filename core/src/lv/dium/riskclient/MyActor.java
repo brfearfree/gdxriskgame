@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -14,8 +15,11 @@ public class MyActor extends Actor {
 
     Sprite sprite;
     public boolean isSwitched = false;
+    private BitmapFont font = new BitmapFont();
 
-    public MyActor(Texture texture, final String actorName, float x, float y) {
+    private int units = 12;
+
+    public MyActor(Texture texture, final String actorName, final float x, final float y) {
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         sprite = new Sprite(texture);
 
@@ -42,10 +46,15 @@ public class MyActor extends Actor {
                 if(d <= (r+m)/2 + Math.cos(a*s) * (r-m) / 2){
                     Gdx.app.log("Touch down asset with name ", actorName);
                     if(currentActor.isSwitched){
+                        //SecureChatClient.send("!c" + x + "," + y + "b");
                         currentActor.setColor(Color.BLUE);
                         currentActor.isSwitched = false;
+                        units--;
                     }
                     else{
+                        //SecureChatClient.send("!c" + x + "," + y + "r");
+                        SecureChatClient.send("!lRoma" + x + ":psw");
+
                         currentActor.setColor(Color.RED);
                         currentActor.isSwitched = true;
                     }
@@ -71,5 +80,16 @@ public class MyActor extends Actor {
         Color color = getColor(); //keep reference to avoid multiple method calls
         sprite.setColor(color.r, color.g, color.b, color.a * parentAlpha);
         sprite.draw(batch);
+
+        int adjustX = 40;
+        if(units<10){
+            adjustX = 50;
+        }
+
+        ActorExample.font.draw(batch, String.valueOf(units), sprite.getX()+adjustX, sprite.getY()+60);
+    }
+
+    public void setUnits(int units) {
+        this.units = units;
     }
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -18,10 +19,16 @@ public class ActorExample implements Screen {
     private Viewport viewport;
     private final AssetManager manager;
 
+    static final ArrayList<MyActor> myActors = new ArrayList<>();
+
+    public static final BitmapFont font = new BitmapFont();
+
     public ActorExample(Game game) {
         this.game = game;
         manager = new AssetManager();
     }
+
+
 
     @Override
     public void show() {
@@ -32,8 +39,7 @@ public class ActorExample implements Screen {
 
         loadAssets();
 
-
-        ArrayList<MyActor> myActors= new ArrayList<>();
+        SecureChatClient.start();
 
         // South Americas
         myActors.add(new MyActor(manager.get(AssetDescriptors.hex) , AssetDescriptors.hex.fileName, 10, 200));
@@ -140,7 +146,9 @@ public class ActorExample implements Screen {
 
     @Override
     public void dispose() {
+        //WssHandler.disconnect();
         stage.dispose();
+        SecureChatClient.group.shutdownGracefully();
     }
 
     private void loadAssets() {
