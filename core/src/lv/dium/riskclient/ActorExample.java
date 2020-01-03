@@ -28,8 +28,6 @@ public class ActorExample implements Screen {
         manager = new AssetManager();
     }
 
-
-
     @Override
     public void show() {
         viewport = new FitViewport(1920, 1024);
@@ -113,6 +111,13 @@ public class ActorExample implements Screen {
 
         for (MyActor a : myActors) {
             stage.addActor(a);
+        }
+    }
+
+    public static void loadGameFromServerState(GameRisk serverState){
+        if(serverState != null && serverState.getId()!=null)
+        for (GameArea a : serverState.getAreas()) {
+            myActors.get(Integer.valueOf(a.getId())).setUnits(Integer.valueOf(a.getStr())).setColorFromServer(a.getColor());
         }
     }
 

@@ -1,7 +1,9 @@
 package lv.dium.riskclient;
 
+import com.fasterxml.jackson.databind.MapperFeature;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Handles a client-side channel.
@@ -46,6 +48,11 @@ public class SecureChatClientHandler extends SimpleChannelInboundHandler<String>
                     jsonPayload = t.substring(3);
                 }
                 System.err.println("Greeting [" + result + "] " + jsonPayload);
+
+                ObjectMapper objectMapper = new ObjectMapper();
+                objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+                GameRisk gameServerState = objectMapper.readValue(jsonPayload, GameRisk.class);
+                ActorExample.loadGameFromServerState(gameServerState);
             }
             // greeting command
             else if(command.equals("f")){

@@ -48,6 +48,7 @@ project(":desktop") {
         api "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
         compile group: 'io.netty', name: 'netty-all', version: '4.1.29.Final'
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.1'
     }
 }
 
@@ -62,5 +63,6 @@ project(":core") {
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         implementation "space.earlygrey:shapedrawer:$shapedrawerVersion"
         compile group: 'io.netty', name: 'netty-all', version: '4.1.29.Final'
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.1'
     }
 }

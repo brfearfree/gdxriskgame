@@ -89,7 +89,45 @@ public class MyActor extends Actor {
         ActorExample.font.draw(batch, String.valueOf(units), sprite.getX()+adjustX, sprite.getY()+60);
     }
 
-    public void setUnits(int units) {
+    public MyActor setUnits(int units) {
         this.units = units;
+        return this;
+    }
+    public MyActor setColorFromServer(String serverColor) {
+
+        /*
+        allColors.add("red");
+        allColors.add("green");
+        allColors.add("grey");
+        allColors.add("blue");
+        allColors.add("yellow");
+        allColors.add("purple");
+        */
+
+        if(serverColor == null){
+            this.setColor(Color.ORANGE);
+        }
+        else if(serverColor.equals("red")){
+            this.setColor(Color.RED);
+        }
+        else if(serverColor.equals("green")){
+            this.setColor(Color.GREEN);
+        }
+        else if(serverColor.equals("grey")){
+            this.setColor(Color.GRAY);
+        }
+        else if(serverColor.equals("blue")){
+            this.setColor(Color.BLUE);
+        }
+        else if(serverColor.equals("yellow")){
+            this.setColor(Color.YELLOW);
+        }
+        else if(serverColor.equals("purple")){
+            this.setColor(Color.PURPLE);
+        }
+        else{
+            this.setColor(Color.ROYAL);
+        }
+        return this;
     }
 }
