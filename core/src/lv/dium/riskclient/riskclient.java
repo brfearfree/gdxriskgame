@@ -1,10 +1,7 @@
 package lv.dium.riskclient;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -17,13 +14,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import static com.badlogic.gdx.graphics.Color.BLACK;
-import static com.badlogic.gdx.graphics.Color.LIME;
 
 public class riskclient extends Game {
 	public SpriteBatch batch;

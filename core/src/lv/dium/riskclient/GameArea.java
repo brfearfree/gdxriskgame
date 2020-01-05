@@ -8,7 +8,7 @@ public class GameArea {
     public String str;
     public String id;
     public String color;
-    public ArrayList<Number> links = new ArrayList<Number>();
+    public ArrayList<Integer> links = new ArrayList<Integer>();
 
     public String getX() {
         return x;
@@ -50,11 +50,11 @@ public class GameArea {
         this.color = color;
     }
 
-    public ArrayList<Number> getLinks() {
+    public ArrayList<Integer> getLinks() {
         return links;
     }
 
-    public void setLinks(ArrayList<Number> links) {
+    public void setLinks(ArrayList<Integer> links) {
         this.links = links;
     }
 }

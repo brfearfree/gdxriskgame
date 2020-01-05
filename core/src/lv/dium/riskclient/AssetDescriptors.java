@@ -10,5 +10,10 @@ public class AssetDescriptors {
     public static final AssetDescriptor<Texture> hex = new AssetDescriptor<Texture>(Assets.HEX, Texture.class);
     public static final AssetDescriptor<Texture> rocket = new AssetDescriptor<Texture>(Assets.ROCKET, Texture.class);
 
+    public static final AssetDescriptor<Texture> hex_main = new AssetDescriptor<Texture>(Assets.HEX_MAIN, Texture.class);
+    public static final AssetDescriptor<Texture> hex_targeteable = new AssetDescriptor<Texture>(Assets.HEX_TARGETABLE, Texture.class);
+    public static final AssetDescriptor<Texture> hex_targeted = new AssetDescriptor<Texture>(Assets.HEX_TARGETED, Texture.class);
+
+
     private AssetDescriptors(){}
 }
