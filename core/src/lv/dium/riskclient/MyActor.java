@@ -116,7 +116,7 @@ public class MyActor extends Actor {
             adjustX = 50;
         }
 
-        ActorExample.font.draw(batch, String.valueOf(units), sprite.getX()+adjustX, sprite.getY()+60);
+        ActorExample.font.draw(batch, String.valueOf(id), sprite.getX()+adjustX, sprite.getY()+60);
     }
 
     public MyActor setUnits(int units) {

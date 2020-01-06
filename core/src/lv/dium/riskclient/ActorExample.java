@@ -88,66 +88,66 @@ public class ActorExample implements Screen {
 
         int areaID = 0;
         //+ North America
-        myActors.add(new MyActor(areaID++,450, 650));
-        myActors.add(new MyActor(areaID++, 270, 550));
-        myActors.add(new MyActor(areaID++, 360, 600));
+        myActors.add(new MyActor(areaID++, 460, 662));
+        myActors.add(new MyActor(areaID++, 370, 611));
+        myActors.add(new MyActor(areaID++, 280, 560));
 
-        myActors.add(new MyActor(areaID++, 360, 700));
-        myActors.add(new MyActor(areaID++, 270, 650));
-        myActors.add(new MyActor(areaID++, 180, 600));
+        myActors.add(new MyActor(areaID++, 370, 713));
+        myActors.add(new MyActor(areaID++, 280, 662));
+        myActors.add(new MyActor(areaID++, 190, 611));
 
-        myActors.add(new MyActor(areaID++, 180, 800));
-        myActors.add(new MyActor(areaID++, 270, 750));
-
-        myActors.add(new MyActor( areaID++,180, 700));
+        myActors.add(new MyActor(areaID++, 280, 764));
+        myActors.add(new MyActor(areaID++, 190, 713));
+        myActors.add(new MyActor(areaID++, 190, 815));
 
         //+ South Americas
-        myActors.add(new MyActor(areaID++, 95, 350));
-        myActors.add(new MyActor(areaID++, 95, 250));
-        myActors.add(new MyActor(areaID++, 10, 300));
+        myActors.add(new MyActor(areaID++, 100, 353));
+        myActors.add(new MyActor(areaID++, 100, 251));
+        myActors.add(new MyActor(areaID++, 10, 302));
         myActors.add(new MyActor(areaID++, 10, 200));
 
         //+ Europe
-        myActors.add(new MyActor(areaID++, 270, 450));
-        myActors.add(new MyActor(areaID++, 270, 350));
-        myActors.add(new MyActor(areaID++, 355, 400));
+        myActors.add(new MyActor(areaID++, 280, 459));
+        myActors.add(new MyActor(areaID++, 280, 357));
+        myActors.add(new MyActor(areaID++, 370, 408));
 
-        myActors.add(new MyActor(areaID++, 355, 200));
-        myActors.add(new MyActor(areaID++, 355, 300));
+        myActors.add(new MyActor(areaID++, 370, 204));
+        myActors.add(new MyActor(areaID++, 370, 306));
 
-        myActors.add(new MyActor(areaID++, 440, 350));
-        myActors.add(new MyActor(areaID++, 440, 250));
-
-        //+ Africa 36-41
-        myActors.add(new MyActor(areaID++, 440, 150));
-        myActors.add(new MyActor(areaID++, 530, 200));
-        myActors.add(new MyActor(areaID++, 530, 100));
-
-        myActors.add(new MyActor(areaID++, 440, 50));
-        myActors.add(new MyActor(areaID++, 530, 0));
-        myActors.add(new MyActor(areaID++, 620, 50));
+        myActors.add(new MyActor(areaID++, 460, 357));
+        myActors.add(new MyActor(areaID++, 460, 255));
 
         //+ Asia
-        myActors.add(new MyActor(areaID++, 620, 550)); //20
-        myActors.add(new MyActor(areaID++, 620, 650)); //21
-        myActors.add(new MyActor(areaID++, 800, 450)); //22
-        myActors.add(new MyActor(areaID++, 710, 600)); //23
-        myActors.add(new MyActor(areaID++, 710, 500)); //24
-        myActors.add(new MyActor(areaID++, 800, 550)); //25
-        myActors.add(new MyActor(areaID++, 530, 400)); //26
-        myActors.add(new MyActor(areaID++, 620, 450)); //27
-        myActors.add(new MyActor(areaID++, 530, 300)); //28
-        myActors.add(new MyActor(areaID++, 620, 350)); //29
-        myActors.add(new MyActor(areaID++, 710, 300)); //30
-        myActors.add(new MyActor(areaID++, 530, 500)); //31
+        myActors.add(new MyActor(areaID++, 640, 561)); //20
+        myActors.add(new MyActor(areaID++, 640, 663)); //21
+        myActors.add(new MyActor(areaID++, 820, 561)); //22
+
+        myActors.add(new MyActor(areaID++, 730, 612)); //23
+        myActors.add(new MyActor(areaID++, 730, 510)); //24
+        myActors.add(new MyActor(areaID++, 820, 459)); //25
+        myActors.add(new MyActor(areaID++, 550, 408)); //26
+        myActors.add(new MyActor(areaID++, 640, 459)); //27
+        myActors.add(new MyActor(areaID++, 550, 306)); //28
+        myActors.add(new MyActor(areaID++, 640, 357)); //29
+        myActors.add(new MyActor(areaID++, 730, 306)); //30
+        myActors.add(new MyActor(areaID++, 550, 510)); //31
 
         //+ Australia 32-35
-        myActors.add(new MyActor(areaID++, 800, 250));
+        myActors.add(new MyActor(areaID++, 820, 255));
 
-        myActors.add(new MyActor(areaID++, 800, 150));
-        myActors.add(new MyActor(areaID++, 890, 200));
+        myActors.add(new MyActor(areaID++, 820, 153));
+        myActors.add(new MyActor(areaID++, 910, 204));
 
-        myActors.add(new MyActor( areaID++,890, 100));
+        myActors.add(new MyActor( areaID++,910, 102));
+
+        //+ Africa 36-41
+        myActors.add(new MyActor(areaID++, 460, 153));
+        myActors.add(new MyActor(areaID++, 550, 204));
+        myActors.add(new MyActor(areaID++, 550, 102));
+
+        myActors.add(new MyActor(areaID++, 460, 51));
+        myActors.add(new MyActor(areaID++, 550, 0));
+        myActors.add(new MyActor(areaID++, 640, 51));
 
         for (MyActor a : myActors) {
             stage.addActor(a);
